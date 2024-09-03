@@ -1,4 +1,5 @@
 (defpackage :scholarly-math
-  (:use :cl))
+  (:use :cl)
+  (:export #:positive-integer-p))
 
 (in-package :scholarly-math)
