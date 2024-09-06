@@ -4,4 +4,4 @@
   :licence "GNU GPLv3"
   :version "0.0.1"
   :components ((:file "src/package")
-	       (:file "src/main")))
+	       (:file "src/types-and-predicates")))
