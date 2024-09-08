@@ -18,4 +18,6 @@
 	   #:non-minus-real
 	   #:non-plus-real
 	   #:non-zero-real
-	   #:sum-integers-from-0-to-n))
+	   #:integer-half
+	   #:sum-integers-from-0-to-n
+	   #:sum-integers-from-m-to-n))

@@ -171,14 +171,36 @@
 (deftest test-types-and-predicates ()
   (check 
    (test-numeric-predicates)
-   (test-deftypes)))
+    (test-deftypes)))
+
+(deftest test-integer-half ()
+  (check
+    (zerop (integer-half 0))
+    (= (integer-half 1) 0)
+    (= (integer-half 2) 1)
+    (= (integer-half 1000) 500)
+    (= (integer-half 1001) 500)))
 
 (deftest test-sum-integers-from-0-to-n ()
   (check
     (= (sum-integers-from-0-to-n 10) 55)
     (= (sum-integers-from-0-to-n 1000) 500500)))
 
+(deftest test-sum-integers-from-m-to-n ()
+  (check
+    (= (sum-integers-from-m-to-n 0 0) 0)
+    (= (sum-integers-from-m-to-n 0 100) 5050)
+    (= (sum-integers-from-m-to-n 40 60) 1050)
+    (= (sum-integers-from-m-to-n 60 40) 1050)
+    (= (sum-integers-from-m-to-n 1501 1000) 627751)))
+
+(deftest test-arithmetic ()
+  (check
+    (test-integer-half)
+    (test-sum-integers-from-0-to-n)
+    (test-sum-integers-from-m-to-n)))
+
 (deftest test-all ()
   (check
     (test-types-and-predicates)
-    (test-sum-integers-from-0-to-n)))
+    (test-arithmetic)))
