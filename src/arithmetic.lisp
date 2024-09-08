@@ -3,6 +3,7 @@
 (defun integer-half (n)
   "Calculates the integer value of half of N, rounding down to the
 nearest whole number."
+  (check-type n integer)
   (ash n -1))
 
 (defun sum-integers-from-0-to-n (n)
