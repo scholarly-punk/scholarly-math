@@ -1,3 +1,5 @@
+(in-package :scholarly-math)
+
 (defun repeat-with-random-arg (fn n min max)
   "Call function FN N times with a random integer argument each time.
 The random integer is generated between MIN (inclusive and

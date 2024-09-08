@@ -1,4 +1,4 @@
-(in-package :scholarly-math-test)
+(in-package :scholarly-math/test)
 
 (deftest test-non-minus-p ()
   (check

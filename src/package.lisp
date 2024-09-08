@@ -19,5 +19,3 @@
 	   #:non-plus-real
 	   #:non-zero-real
 	   #:sum-integers-from-0-to-n))
-
-(in-package :scholarly-math)

@@ -9,8 +9,6 @@
 	       (:file "src/main")
 	       (:file "src/testing-utilities")))
 
-(defsystem "scholarly-math-test"
+(defsystem "scholarly-math/test"
   :depends-on ("scholarly-math" "gigamonkeys-test")
-  :components ((:file "test/test"))
-  :perform (test-op (o c) (uiop:symbol-call '#:test-all)))
-
+  :components ((:file "test/test")))
