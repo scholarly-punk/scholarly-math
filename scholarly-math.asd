@@ -6,6 +6,7 @@
   :serial t
   :components ((:file "src/package")
 	       (:file "src/types-and-predicates")
+	       (:file "src/arithmetic")
 	       (:file "src/main")
 	       (:file "src/testing-utilities")))
 
