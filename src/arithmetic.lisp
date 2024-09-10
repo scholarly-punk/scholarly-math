@@ -17,3 +17,11 @@ nearest whole number."
   (check-type m non-minus-integer)
   (integer-half (* (1+ (abs (- n m)))
 		   (+ n m))))
+
+(defun factor (list-of-integers)
+  "Factors a LIST-OF-INTEGERS using the distributive property. For
+example (+ AB AC) = (* A (+ B C))."
+  (check-type list-of-integers list-of-integers)
+  (let ((factor (reduce #'gcd list-of-integers)))
+    (list '* factor
+	  (cons '+ (mapcar #'(lambda (x) (/ x factor)) list-of-integers)))))

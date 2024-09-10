@@ -71,3 +71,13 @@
 (defun non-zero-integer-p (object)
   "Return true if OBJECT is a non zero INTEGER, and NIL otherwise."
   (typep object 'non-zero-integer))
+
+(defun list-of-integers-p (object)
+  "Return true if OBJECT is a list of integers, and NIL otherwise."
+  (and (listp object)
+       (every #'integerp object)))
+
+(deftype list-of-integers ()
+  "A list where every element is an integer."
+  `(satisfies list-of-integers-p))
+

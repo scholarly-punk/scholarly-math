@@ -144,6 +144,23 @@
     (typep -1 'non-zero-real)
     (typep -1.234 'non-zero-real)))
 
+(deftest test-list-of-integers-p ()
+  (check
+    (list-of-integers-p '())
+    (list-of-integers-p '(1))
+    (list-of-integers-p '(1 2 3 4 5))
+    (not (list-of-integers-p '(1 2 c 4 5)))
+    (not (list-of-integers-p '(1 2 2.5 4 5)))))
+
+(deftest test-type-list-of-integers ()
+  (check
+    (not (typep 1 'list-of-integers))
+    (not (typep 1.2 'list-of-integers))
+    (typep '() 'list-of-integers)
+    (typep '(1 2 3 4 5) 'list-of-integers)
+    (not (typep '(1 2 c 4 5) 'list-of-integers))
+    (not (typep '(1 2 3 4.5 5) 'list-of-integers))))
+
 (deftest test-numeric-predicates ()
   (check
     (test-non-minus-p)
@@ -153,7 +170,8 @@
     (test-minus-integer-p)
     (test-non-minus-integer-p)
     (test-non-plus-integer-p)
-    (test-non-zero-integer-p)))
+    (test-non-zero-integer-p)
+    (test-list-of-integers-p)))
 
 (deftest test-deftypes ()
   (check
@@ -166,7 +184,8 @@
     (test-type-minus-real)
     (test-type-non-minus-real)
     (test-type-non-plus-real)
-    (test-type-non-zero-real)))
+    (test-type-non-zero-real)
+    (test-type-list-of-integers)))
 
 (deftest test-types-and-predicates ()
   (check 
@@ -194,11 +213,19 @@
     (= (sum-integers-from-m-to-n 60 40) 1050)
     (= (sum-integers-from-m-to-n 1501 1000) 627751)))
 
+(deftest test-factor ()
+  (check
+    (equal (factor '()) '(* 0 (+)))
+    (equal (factor '(1)) '(* 1 (+ 1)))
+    (equal (factor '(5 10)) '(* 5 (+ 1 2)))
+    (equal (factor '(500 250 1000)) '(* 250 (+ 2 1 4)))))
+
 (deftest test-arithmetic ()
   (check
     (test-integer-half)
     (test-sum-integers-from-0-to-n)
-    (test-sum-integers-from-m-to-n)))
+    (test-sum-integers-from-m-to-n)
+    (test-factor)))
 
 (deftest test-all ()
   (check
