@@ -213,19 +213,35 @@
     (= (sum-integers-from-m-to-n 60 40) 1050)
     (= (sum-integers-from-m-to-n 1501 1000) 627751)))
 
-(deftest test-factor ()
+(deftest test-distributive-factor ()
   (check
-    (equal (factor '()) '(* 0 (+)))
-    (equal (factor '(1)) '(* 1 (+ 1)))
-    (equal (factor '(5 10)) '(* 5 (+ 1 2)))
-    (equal (factor '(500 250 1000)) '(* 250 (+ 2 1 4)))))
+    (equal (distributive-factor '()) '(* 0 (+)))
+    (equal (distributive-factor '(1)) '(* 1 (+ 1)))
+    (equal (distributive-factor '(5 10)) '(* 5 (+ 1 2)))
+    (equal (distributive-factor '(500 250 1000)) '(* 250 (+ 2 1 4)))))
+
+(deftest test-distributive-expand ()
+  (check
+    (equal (distributive-expand '(* 0 (+))) '())
+    (equal (distributive-expand '(* 1 (+ 1))) '(1))
+    (equal (distributive-expand '(* 5 (+ 1 2))) '(5 10))
+    (equal (distributive-expand '(* 250 (+ 2 1 4))) '(500 250 1000))))
+
+(deftest test-distributive-factor-and-expand ()
+  (check
+    (equal (distributive-expand (distributive-factor '())) '())
+    (equal (distributive-expand (distributive-factor '(1))) '(1))
+    (equal (distributive-expand (distributive-factor '(5 10))) '(5 10))
+    (equal (distributive-expand (distributive-factor '(500 250 1000))) '(500 250 1000))))
 
 (deftest test-arithmetic ()
   (check
     (test-integer-half)
     (test-sum-integers-from-0-to-n)
     (test-sum-integers-from-m-to-n)
-    (test-factor)))
+    (test-distributive-factor)
+    (test-distributive-expand)
+    (test-distributive-factor-and-expand)))
 
 (deftest test-all ()
   (check

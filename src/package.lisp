@@ -23,5 +23,5 @@
 	   #:integer-half
 	   #:sum-integers-from-0-to-n
 	   #:sum-integers-from-m-to-n
-	   #:factor
-	   #:distribute))
+	   #:distributive-factor
+	   #:distributive-expand))

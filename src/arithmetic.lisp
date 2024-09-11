@@ -18,10 +18,18 @@ nearest whole number."
   (integer-half (* (1+ (abs (- n m)))
 		   (+ n m))))
 
-(defun factor (list-of-integers)
+(defun distributive-factor (list-of-integers)
   "Factors a LIST-OF-INTEGERS using the distributive property. For
-example (+ AB AC) = (* A (+ B C))."
+example, (+ AB AC) = (* A (+ B C))."
   (check-type list-of-integers list-of-integers)
   (let ((factor (reduce #'gcd list-of-integers)))
     (list '* factor
-	  (cons '+ (mapcar #'(lambda (x) (/ x factor)) list-of-integers)))))
+	  (cons '+ (mapcar #'(lambda (x) (/ x factor))
+			   list-of-integers)))))
+
+(defun distributive-expand (factored-list)
+  "Expands FACTORED-LIST using the distributive property. For example,
+ (* A (+ B C) = (+ AB AC)."
+  (mapcar #'(lambda (x)
+	      (* (second factored-list) x))
+	  (rest (third factored-list))))
