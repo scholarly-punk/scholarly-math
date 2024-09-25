@@ -18,22 +18,15 @@ nearest whole number."
   (integer-half (* (1+ (abs (- n m)))
 		   (+ n m))))
 
-(defstruct (factored-list
-	    (:print-function
-	     (lambda (struct stream depth)
-	       (declare (ignore depth))
-	       (format stream "#<Factored (~A ~A ~A)"
-		       (factored-list-factor-op struct)
-		       (factored-list-factor struct)
-		       (factored-list-sum-list struct)))))
+(defstruct (factored-list (:type list))
   "A list factored with the distributive property."
   (factor-op '*)
   factor
   sum-list)
 
 (defun distributive-factor (list-of-integers)
-  "Factors a LIST-OF-INTEGERS using the distributive property. For
-example, (+ AB AC) = (* A (+ B C))."
+  "Factors a LIST-OF-INTEGERS into FACTORED-LIST using the distributive
+property. For example, (+ AB AC) = (* A (+ B C))."
   (check-type list-of-integers list-of-integers)
   (let ((factor (reduce #'gcd list-of-integers)))
     (make-factored-list
@@ -43,9 +36,9 @@ example, (+ AB AC) = (* A (+ B C))."
 				list-of-integers)))))
 
 (defun distributive-expand (factored-list)
-  "Expands FACTORED-LIST using the distributive property. For example,
+  "Expands a FACTORED-LIST using the distributive property. For example,
  (* A (+ B C) = (+ AB AC)."
-  (check-type factored-list factored-list)
+  (check-type factored-list list)
   (mapcar #'(lambda (x)
 	      (funcall (factored-list-factor-op factored-list)
 		       (factored-list-factor factored-list)
