@@ -4,7 +4,7 @@
   "Calculates the integer value of half of N, rounding down to the
 nearest whole number."
   (check-type n integer)
-  (ash n -1))
+  (truncate n 2))
 
 (defun sum-integers-from-0-to-n (n)
   "Calculate the sum of the consecutive integers from 0 up to and including N."
@@ -18,18 +18,36 @@ nearest whole number."
   (integer-half (* (1+ (abs (- n m)))
 		   (+ n m))))
 
+(defstruct (factored-list
+	    (:print-function
+	     (lambda (struct stream depth)
+	       (declare (ignore depth))
+	       (format stream "#<Factored (~A ~A ~A)"
+		       (factored-list-factor-op struct)
+		       (factored-list-factor struct)
+		       (factored-list-sum-list struct)))))
+  "A list factored with the distributive property."
+  (factor-op '*)
+  factor
+  sum-list)
+
 (defun distributive-factor (list-of-integers)
   "Factors a LIST-OF-INTEGERS using the distributive property. For
 example, (+ AB AC) = (* A (+ B C))."
   (check-type list-of-integers list-of-integers)
   (let ((factor (reduce #'gcd list-of-integers)))
-    (list '* factor
-	  (cons '+ (mapcar #'(lambda (x) (/ x factor))
-			   list-of-integers)))))
+    (make-factored-list
+     :factor-op '*
+     :factor factor
+     :sum-list (cons '+ (mapcar #'(lambda (x) (/ x factor))
+				list-of-integers)))))
 
 (defun distributive-expand (factored-list)
   "Expands FACTORED-LIST using the distributive property. For example,
  (* A (+ B C) = (+ AB AC)."
+  (check-type factored-list factored-list)
   (mapcar #'(lambda (x)
-	      (* (second factored-list) x))
-	  (rest (third factored-list))))
+	      (funcall (factored-list-factor-op factored-list)
+		       (factored-list-factor factored-list)
+		       x))
+	  (rest (factored-list-sum-list factored-list))))

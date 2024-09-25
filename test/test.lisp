@@ -215,17 +215,17 @@
 
 (deftest test-distributive-factor ()
   (check
-    (equal (distributive-factor '()) '(* 0 (+)))
-    (equal (distributive-factor '(1)) '(* 1 (+ 1)))
-    (equal (distributive-factor '(5 10)) '(* 5 (+ 1 2)))
-    (equal (distributive-factor '(500 250 1000)) '(* 250 (+ 2 1 4)))))
+    (equalp (distributive-factor '()) (make-factored-list :factor 0 :sum-list '(+)))
+    (equalp (distributive-factor '(1)) (make-factored-list :factor 1 :sum-list '(+ 1)))
+    (equalp (distributive-factor '(5 10)) (make-factored-list :factor 5 :sum-list '(+ 1 2)))
+    (equalp (distributive-factor '(500 250 1000)) (make-factored-list :factor 250 :sum-list '(+ 2 1 4)))))
 
 (deftest test-distributive-expand ()
   (check
-    (equal (distributive-expand '(* 0 (+))) '())
-    (equal (distributive-expand '(* 1 (+ 1))) '(1))
-    (equal (distributive-expand '(* 5 (+ 1 2))) '(5 10))
-    (equal (distributive-expand '(* 250 (+ 2 1 4))) '(500 250 1000))))
+    (equal (distributive-expand (make-factored-list :factor 0 :sum-list '(+))) '())
+    (equal (distributive-expand (make-factored-list :factor 1 :sum-list '(+ 1))) '(1))
+    (equal (distributive-expand (make-factored-list :factor 5 :sum-list '(+ 1 2))) '(5 10))
+    (equal (distributive-expand (make-factored-list :factor 250 :sum-list '(+ 2 1 4))) '(500 250 1000))))
 
 (deftest test-distributive-factor-and-expand ()
   (check
