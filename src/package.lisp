@@ -25,4 +25,5 @@
 	   #:sum-integers-from-m-to-n
 	   #:make-factored-list
 	   #:distributive-factor
-	   #:distributive-expand))
+	   #:distributive-expand
+	   #:build-list))
