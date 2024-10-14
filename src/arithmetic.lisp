@@ -28,12 +28,27 @@ example, (+ AB AC) = (* A (+ B C))."
 	  (cons '+ (mapcar #'(lambda (x) (/ x factor))
 			   list-of-integers)))))
 
+(defun factored-list-op (factored-list)
+  "Returns the operator, usually *, of FACTORED-LIST."
+  (check-type factored-list list)
+  (first factored-list))
+
+(defun factored-list-factor (factored-list)
+  "Returns the factor of FACTORED-LIST."
+  (check-type factored-list list)
+  (second factored-list))
+
+(defun factored-list-sum-list (factored-list)
+  "Returns the sum list of FACTORED-LIST."
+  (check-type factored-list list)
+  (third factored-list))
+
 (defun distributive-expand (factored-list)
   "Expands a FACTORED-LIST using the distributive property. For example,
  (* A (+ B C) = (+ AB AC)."
   (check-type factored-list list)
   (mapcar #'(lambda (x)
-	      (funcall (factored-list-factor-op factored-list)
+	      (funcall (factored-list-op factored-list)
 		       (factored-list-factor factored-list)
 		       x))
 	  (rest (factored-list-sum-list factored-list))))
