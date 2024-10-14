@@ -10,6 +10,8 @@ from 0 to (1- N)."
       ((< i 0) list)))
 
 (defun range (n &key (start 0) (step 1))
+  "Creates a list that contains the range of integers from START to N by
+STEP."
   (check-type n integer)
   (check-type start integer)
   (check-type step integer)
