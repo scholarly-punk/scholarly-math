@@ -26,4 +26,5 @@
 	   #:make-factored-list
 	   #:distributive-factor
 	   #:distributive-expand
-	   #:build-list))
+	   #:build-list
+	   #:range))

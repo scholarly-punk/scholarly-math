@@ -248,9 +248,22 @@
     (equal (build-list 10 #'identity) '(0 1 2 3 4 5 6 7 8 9))
     (equal (build-list 10 #'(lambda (x) (* x 2))) '(0 2 4 6 8 10 12 14 16 18))))
 
+(deftest test-range ()
+  (check
+    (equal (range 10) '(0 1 2 3 4 5 6 7 8 9))
+    (equal (range 10 :start 5) '(5 6 7 8 9))
+    (equal (range 10 :start 2 :step 2) '(2 4 6 8))
+    (equal (range -5 :step -1) '(0 -1 -2 -3 -4))
+    (equal (range 5 :step 2) '(0 2 4))
+    (equal (range -5 :step -2) '(0 -2 -4))
+    (equal (range 10 :start -10) '(-10 -9 -8 -7 -6 -5 -4 -3 -2 -1 0 1 2 3 4 5 6 7 8 9))
+    (equal (range 10 :start -10 :step 2) '(-10 -8 -6 -4 -2 0 2 4 6 8))
+    (equal (range 10 :start 5 :step 2) '(5 7 9))))
+
 (deftest test-list ()
   (check
-    (test-build-list)))
+    (test-build-list)
+    (test-range)))
 
 (deftest test-all ()
   (check
