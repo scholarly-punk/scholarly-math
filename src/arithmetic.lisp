@@ -4,7 +4,7 @@
   "Calculates the integer value of half of N, rounding down to the
 nearest whole number."
   (check-type n integer)
-  (truncate n 2))
+  (ash n -1))
 
 (defun sum-integers-from-0-to-n (n)
   "Calculate the sum of the consecutive integers from 0 up to and including N."
