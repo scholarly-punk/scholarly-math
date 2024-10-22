@@ -29,4 +29,5 @@
 	   #:build-list
 	   #:range
 	   #:list-to-string
-	   #:list-to-integer))
+	   #:list-to-integer
+	   #:sum-digits))

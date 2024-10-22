@@ -234,6 +234,13 @@
     (equal (distributive-expand (distributive-factor '(5 10))) '(5 10))
     (equal (distributive-expand (distributive-factor '(500 250 1000))) '(500 250 1000))))
 
+(deftest test-sum-digits ()
+  (check
+    (= (sum-digits 0) 0)
+    (= (sum-digits 5) 5)
+    (= (sum-digits 45) 9)
+    (= (sum-digits 100482) 15)))
+
 (deftest test-arithmetic ()
   (check
     (test-integer-half)
@@ -241,7 +248,8 @@
     (test-sum-integers-from-m-to-n)
     (test-distributive-factor)
     (test-distributive-expand)
-    (test-distributive-factor-and-expand)))
+    (test-distributive-factor-and-expand)
+    (test-sum-digits)))
 
 (deftest test-build-list ()
   (check

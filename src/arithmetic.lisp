@@ -52,3 +52,10 @@ example, (+ AB AC) = (* A (+ B C))."
 		       (factored-list-factor factored-list)
 		       x))
 	  (rest (factored-list-sum-list factored-list))))
+
+(defun sum-digits (n)
+  "Sums the digits of positive integer N."
+  (check-type n non-minus-integer)
+  (do ((sum 0 (+ sum (rem int 10)))
+	(int n (truncate int 10)))
+       ((zerop int) sum)))
