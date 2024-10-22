@@ -27,4 +27,6 @@
 	   #:distributive-factor
 	   #:distributive-expand
 	   #:build-list
-	   #:range))
+	   #:range
+	   #:list-to-string
+	   #:list-to-integer))

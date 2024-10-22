@@ -260,10 +260,28 @@
     (equal (range 10 :start -10 :step 2) '(-10 -8 -6 -4 -2 0 2 4 6 8))
     (equal (range 10 :start 5 :step 2) '(5 7 9))))
 
+(deftest test-list-to-string ()
+  (check
+    (string= (list-to-string '(0)) "0")
+    (string= (list-to-string '(1)) "1")
+    (string= (list-to-string '(1 0)) "10")
+    (string= (list-to-string (make-list 4 :initial-element 9)) "9999")
+    (string= (list-to-string (make-list 3 :initial-element 123)) "123123123")))
+
+(deftest test-list-to-integer ()
+  (check
+    (= (list-to-integer '(0)) 0)
+    (= (list-to-integer '(1)) 1)
+    (= (list-to-integer '(1 0)) 10)
+    (= (list-to-integer (make-list 4 :initial-element 9)) 9999)
+    (= (list-to-integer (make-list 3 :initial-element 123)) 123123123)))
+
 (deftest test-list ()
   (check
     (test-build-list)
-    (test-range)))
+    (test-range)
+    (test-list-to-string)
+    (test-list-to-integer)))
 
 (deftest test-all ()
   (check

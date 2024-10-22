@@ -20,3 +20,13 @@ STEP."
 	  n start step)
   (build-list (ceiling (- n start) step)
 	      #'(lambda (x) (+ (* x step) start))))
+
+(defun list-to-string (list)
+  "Converts a list into a string"
+  (check-type list list)
+  (format nil "~{~A~}" list))
+
+(defun list-to-integer (list)
+  "Converts a list of integers to an integer"
+  (check-type list list)
+  (parse-integer (list-to-string list)))
