@@ -31,7 +31,7 @@ STEP."
   (check-type list list)
   (parse-integer (list-to-string list)))
 
-(defun multiples-of (m &key (start 0) (end) (n))
+(defun multiples-of (m &key (start 1) (end) (n))
   (check-type m integer)
   (check-type start integer)
   (if end (check-type end integer))
@@ -39,7 +39,7 @@ STEP."
   (if n (check-type n non-minus-integer))
   (if (not n) (check-type end integer))
 
-  (let ((first-multiple (+ start (- m (rem start m)))))
+  (let ((first-multiple (if (zerop start) 0 (+ start (- m (rem start m))))))
     (range (if (not n)
 	       end
 	       (let ((end-multiple (+ first-multiple (* m n))))
