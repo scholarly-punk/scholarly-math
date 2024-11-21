@@ -30,4 +30,5 @@
 	   #:range
 	   #:list-to-string
 	   #:list-to-integer
-	   #:sum-digits))
+	   #:sum-digits
+	   #:multiples-of))

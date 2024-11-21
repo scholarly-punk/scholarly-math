@@ -284,12 +284,20 @@
     (= (list-to-integer (make-list 4 :initial-element 9)) 9999)
     (= (list-to-integer (make-list 3 :initial-element 123)) 123123123)))
 
+(deftest test-multiples-of ()
+  (check
+    (equal (multiples-of 3 :start 0 :end 10) '(0 3 6 9))
+    (equal (multiples-of 3 :start 0 :n 3) '(0 3 6))
+    (equal (multiples-of 4 :end 20) '(4 8 12 16))
+    (equal (multiples-of 3 :n 3) '(3 6 9))))
+
 (deftest test-list ()
   (check
-    (test-build-list)
-    (test-range)
-    (test-list-to-string)
-    (test-list-to-integer)))
+   (test-build-list)
+   (test-range)
+   (test-list-to-string)
+   (test-list-to-integer)
+   (test-multiples-of)))
 
 (deftest test-all ()
   (check
