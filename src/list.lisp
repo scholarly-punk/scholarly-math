@@ -30,3 +30,20 @@ STEP."
   "Converts a list of integers to an integer"
   (check-type list list)
   (parse-integer (list-to-string list)))
+
+(defun multiples-of (m &key (start 0) (end) (n))
+  (check-type m integer)
+  (check-type start integer)
+  (if end (check-type end integer))
+  (if (not end) (check-type n non-minus-integer))
+  (if n (check-type n non-minus-integer))
+  (if (not n) (check-type end integer))
+
+  (let ((first-multiple (+ start (- m (rem start m)))))
+    (range (if (not n)
+	       end
+	       (let ((end-multiple (+ first-multiple (* m n))))
+		 (if (not end)
+		     end-multiple
+		     (min end end-multiple))))
+	   :start first-multiple :step m)))
