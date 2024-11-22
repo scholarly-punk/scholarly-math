@@ -16,12 +16,10 @@ return n."
 (defun multiples-of (m &key (start 1) (end) (n))
   (check-type m integer)
   (check-type start integer)
-  (if end (check-type end integer))
-  (if (not end) (check-type n non-minus-integer))
-  (if n (check-type n non-minus-integer))
-  (if (not n) (check-type end integer))
+  (if end (check-type end integer) (check-type n non-minus-integer))
+  (if n (check-type n non-minus-integer) (check-type end integer))
 
-  (let ((first-multiple (if (zerop start) 0 (+ start (- m (rem start m))))))
+  (let ((first-multiple (closest-multiple-of m start)))
     (range (if (not n)
 	       end
 	       (let ((end-multiple (+ first-multiple (* m n))))
