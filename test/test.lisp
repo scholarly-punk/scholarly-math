@@ -295,7 +295,11 @@
     (= (closest-multiple-of 3 10) 12)
     (= (closest-multiple-of 3 10 :less-than t) 9)
     (= (closest-multiple-of 3 -10) -9)
-    (= (closest-multiple-of 3 -10 :less-than t) -12)))
+    (= (closest-multiple-of 3 -10 :less-than t) -12)
+    (= (closest-multiple-of 5 10) 10)
+    (= (closest-multiple-of 5 10 :less-than t) 10)
+    (= (closest-multiple-of 5 -10) -10)
+    (= (closest-multiple-of 5 -10 :less-than t) -10)))
 
 (deftest test-multiples-of ()
   (check
