@@ -300,7 +300,10 @@
 
 (deftest test-integer-to-list ()
   (check
-    (equal (integer-to-list 1) '(1))))
+    (equal (integer-to-list 1) '(1))
+    (equal (integer-to-list 12) '(1 2))
+    (equal (integer-to-list 0) '(0))
+    (equal (integer-to-list 123456) '(1 2 3 4 5 6))))
 
 (deftest test-list ()
   (check

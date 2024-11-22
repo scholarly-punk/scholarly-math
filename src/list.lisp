@@ -35,7 +35,7 @@ STEP."
   "Converts a postive integer into a list of its digits."
   (check-type n non-minus-integer)
 
-  (do* ((int n (truncate int 10))
-	(last-digit (rem int 10) (rem int 10))
+  (do* ((int n (drop-last-digit int))
+	(last-digit (last-digit int) (last-digit int))
 	(list (list last-digit) (cons last-digit list)))
        ((< int 10) list)))
