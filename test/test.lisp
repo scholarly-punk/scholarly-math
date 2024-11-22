@@ -306,7 +306,10 @@
     (equal (multiples-of 3 :start 0 :end 10) '(0 3 6 9))
     (equal (multiples-of 3 :start 0 :n 3) '(0 3 6))
     (equal (multiples-of 4 :end 20) '(4 8 12 16))
-    (equal (multiples-of 3 :n 3) '(3 6 9))))
+    (equal (multiples-of 3 :n 3) '(3 6 9))
+    (equal (multiples-of 3 :start -10 :end 0) '(-9 -6 -3))
+    (equal (multiples-of 3 :start -10 :end 10) '(-9 -6 -3 0 3 6 9))
+    (equal (multiples-of 3 :start -10 :end 5) '(-9 -6 -3 0 3))))
 
 (deftest test-number-theory ()
   (check
