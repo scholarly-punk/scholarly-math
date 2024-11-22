@@ -7,6 +7,7 @@
   :components ((:file "src/package")
 	       (:file "src/types-and-predicates")
 	       (:file "src/arithmetic")
+	       (:file "src/number-theory")
 	       (:file "src/list")
 	       (:file "src/main")
 	       (:file "src/testing-utilities")))

@@ -31,4 +31,5 @@
 	   #:list-to-string
 	   #:list-to-integer
 	   #:sum-digits
-	   #:multiples-of))
+	   #:multiples-of
+	   #:closest-multiple-of))
