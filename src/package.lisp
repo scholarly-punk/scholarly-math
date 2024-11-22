@@ -32,4 +32,5 @@
 	   #:list-to-integer
 	   #:sum-digits
 	   #:multiples-of
-	   #:closest-multiple-of))
+	   #:closest-multiple-of
+	   #:integer-to-list))

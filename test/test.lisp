@@ -276,12 +276,6 @@
     (string= (list-to-string (make-list 4 :initial-element 9)) "9999")
     (string= (list-to-string (make-list 3 :initial-element 123)) "123123123")))
 
-(deftest test-list ()
-  (check
-    (test-build-list)
-    (test-range)
-    (test-list-to-string)))
-
 (deftest test-list-to-integer ()
   (check
     (= (list-to-integer '(0)) 0)
@@ -289,6 +283,18 @@
     (= (list-to-integer '(1 0)) 10)
     (= (list-to-integer (make-list 4 :initial-element 9)) 9999)
     (= (list-to-integer (make-list 3 :initial-element 123)) 123123123)))
+
+(deftest test-integer-to-list ()
+  (check
+    (equal (integer-to-list 1) '(1))))
+
+(deftest test-list ()
+  (check
+    (test-build-list)
+    (test-range)
+    (test-list-to-string)
+    (test-list-to-integer)
+    (test-integer-to-list)))
 
 (deftest test-closest-multiple-of ()
   (check

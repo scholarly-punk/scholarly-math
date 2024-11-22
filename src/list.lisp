@@ -30,3 +30,12 @@ STEP."
   "Converts a list of integers to an integer"
   (check-type list list)
   (parse-integer (list-to-string list)))
+
+(defun integer-to-list (n)
+  "Converts a postive integer into a list of its digits."
+  (check-type n plus-integer)
+
+  (do* ((int n (truncate int 10))
+	(last-digit (rem int 10) (rem int 10))
+	(list (list last-digit) (cons last-digit list)))
+       ((< int 9) list)))
