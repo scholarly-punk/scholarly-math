@@ -33,4 +33,6 @@
 	   #:sum-digits
 	   #:multiples-of
 	   #:closest-multiple-of
-	   #:integer-to-list))
+	   #:integer-to-list
+	   #:last-digit
+	   #:drop-last-digit))

@@ -53,9 +53,19 @@ example, (+ AB AC) = (* A (+ B C))."
 		       x))
 	  (rest (factored-list-sum-list factored-list))))
 
+(defun last-digit (n)
+  "Returns the last digit of non-minus integer N."
+  (check-type n non-minus-integer)
+  (rem n 10))
+
+(defun drop-last-digit (n)
+  "Drop the last digit from non-minus integer N."
+  (check-type n non-minus-integer)
+  (truncate n 10))
+
 (defun sum-digits (n)
   "Sums the digits of positive integer N."
   (check-type n non-minus-integer)
-  (do ((sum 0 (+ sum (rem int 10)))
-	(int n (truncate int 10)))
-       ((zerop int) sum)))
+  (do ((sum 0 (+ sum (last-digit int)))
+       (int n (drop-last-digit int)))
+      ((zerop int) sum)))

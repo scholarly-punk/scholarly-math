@@ -234,6 +234,18 @@
     (equal (distributive-expand (distributive-factor '(5 10))) '(5 10))
     (equal (distributive-expand (distributive-factor '(500 250 1000))) '(500 250 1000))))
 
+(deftest test-last-digit ()
+  (check
+    (= (last-digit 0) 0)
+    (= (last-digit 1) 1)
+    (= (last-digit 10492) 2)))
+
+(deftest test-drop-last-digit ()
+  (check
+    (= (drop-last-digit 0) 0)
+    (= (drop-last-digit 1) 0)
+    (= (drop-last-digit 10492) 1049)))
+
 (deftest test-sum-digits ()
   (check
     (= (sum-digits 0) 0)
@@ -249,6 +261,8 @@
     (test-distributive-factor)
     (test-distributive-expand)
     (test-distributive-factor-and-expand)
+    (test-last-digit)
+    (test-drop-last-digit)
     (test-sum-digits)))
 
 (deftest test-build-list ()
