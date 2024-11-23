@@ -35,4 +35,5 @@
 	   #:closest-multiple-of
 	   #:integer-to-list
 	   #:last-digit
-	   #:drop-last-digit))
+	   #:drop-last-digit
+	   #:count-multiples-between))

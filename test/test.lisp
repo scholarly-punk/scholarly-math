@@ -334,10 +334,18 @@
     (equal (multiples-of 3 :start -10 :end 10) '(-9 -6 -3 0 3 6 9))
     (equal (multiples-of 3 :start -10 :end 5) '(-9 -6 -3 0 3))))
 
+(deftest test-count-multiples-between ()
+  (check
+    (= (count-multiples-between 5 4 5) 1)
+    (= (count-multiples-between 5 4 4) 0)
+    (= (count-multiples-between 10 0 20) 2)
+    (= (count-multiples-between 11 17 100) 8)))
+
 (deftest test-number-theory ()
   (check
     (test-closest-multiple-of)
-    (test-multiples-of)))
+    (test-multiples-of)
+    (test-count-multiples-between)))
 
 (deftest test-all ()
   (check

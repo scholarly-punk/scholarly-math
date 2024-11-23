@@ -14,7 +14,10 @@ return n."
 	  (t (- n remainder)))))
 
 (defun multiples-of (m &key (start 1) (end) (n))
-  (check-type m integer)
+  "Returns a list containing the multiples of M starting from START. END
+specifies the end of the range. N specifies the first N multiples
+between START and END to include in the list."
+  (check-type m plus-integer)
   (check-type start integer)
   (if end (check-type end integer) (check-type n non-minus-integer))
   (if n (check-type n non-minus-integer) (check-type end integer))
@@ -27,3 +30,10 @@ return n."
 		     end-multiple
 		     (min end end-multiple))))
 	   :start first-multiple :step m)))
+
+(defun count-multiples-between (m start end)
+  "Return the number of multiples of M between START and END."
+  (check-type m plus-integer)
+  (check-type start integer)
+  (check-type end integer)
+  (- (truncate end m) (truncate start m)))
