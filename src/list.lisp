@@ -39,3 +39,9 @@ STEP."
 	(last-digit (last-digit int) (last-digit int))
 	(list (list last-digit) (cons last-digit list)))
        ((< int 10) list)))
+
+(do ((multiple (closest-multiple-of 33 1000 :less-than t)
+	       (- multiple 33)))
+    ((= 3 (length (remove-duplicates
+		   (integer-to-list multiple))))
+     multiple))

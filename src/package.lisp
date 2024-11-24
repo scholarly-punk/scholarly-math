@@ -36,4 +36,5 @@
 	   #:integer-to-list
 	   #:last-digit
 	   #:drop-last-digit
-	   #:count-multiples-between))
+	   #:count-multiples-between
+	   #:multiple-of-p))

@@ -37,3 +37,9 @@ between START and END to include in the list."
   (check-type start integer)
   (check-type end integer)
   (- (truncate end m) (truncate start m)))
+
+(defun multiple-of-p (n m)
+  "Return t if N is a multiple of M, nil otherwise."
+  (check-type n integer)
+  (check-type m integer)
+  (zerop (rem n m)))
