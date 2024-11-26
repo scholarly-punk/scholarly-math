@@ -313,6 +313,13 @@
     (test-list-to-integer)
     (test-integer-to-list)))
 
+(deftest test-multiple-of-p ()
+  (check
+    (multiple-of-p 10 5)
+    (multiple-of-p 121 11)
+    (not (multiple-of-p 6 10))
+    (not (multiple-of-p 15 16))))
+
 (deftest test-closest-multiple-of ()
   (check
     (= (closest-multiple-of 3 10) 12)
@@ -343,6 +350,7 @@
 
 (deftest test-number-theory ()
   (check
+    (test-multiple-of-p)
     (test-closest-multiple-of)
     (test-multiples-of)
     (test-count-multiples-between)))
