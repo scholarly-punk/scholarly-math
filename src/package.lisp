@@ -39,4 +39,5 @@
 	   #:count-multiples-between
 	   #:multiple-of-p
 	   #:sqr
-	   #:prime-sieve))
+	   #:prime-sieve
+	   #:primep))
