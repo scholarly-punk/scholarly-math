@@ -348,6 +348,10 @@
     (= (count-multiples-between 10 0 20) 2)
     (= (count-multiples-between 11 17 100) 8)))
 
+(deftest test-prime-sieve ()
+  (check
+    (= (prime-sieve 10) '(2 3 5 7))))
+
 (deftest test-number-theory ()
   (check
     (test-multiple-of-p)

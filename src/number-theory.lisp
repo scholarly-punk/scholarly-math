@@ -43,3 +43,15 @@ between START and END to include in the list."
   (check-type n integer)
   (check-type m integer)
   (zerop (rem n m)))
+
+(defun prime-sieve (n)
+  "Returns the prime numbers between 2 and N."
+  (check-type n plus-integer)
+
+  (if (= n 1)
+      '()
+      (do ((candidates (range (1+ n) :start 2) (remove-if #'(lambda (x)
+							      (multiple-of-p x (first candidates)))
+							  (rest candidates)))
+	   (primes '() (cons (car candidates) primes)))
+	  ((>= (sqr (first candidates)) n) (append (nreverse primes) candidates)))))

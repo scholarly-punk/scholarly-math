@@ -37,4 +37,5 @@
 	   #:last-digit
 	   #:drop-last-digit
 	   #:count-multiples-between
-	   #:multiple-of-p))
+	   #:multiple-of-p
+	   #:sqr))

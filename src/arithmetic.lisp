@@ -69,3 +69,7 @@ example, (+ AB AC) = (* A (+ B C))."
   (do ((sum 0 (+ sum (last-digit int)))
        (int n (drop-last-digit int)))
       ((zerop int) sum)))
+
+(defun sqr (n)
+  "Return the square of n."
+  (* n n))
