@@ -350,7 +350,10 @@
 
 (deftest test-prime-sieve ()
   (check
-    (= (prime-sieve 10) '(2 3 5 7))))
+    (null (prime-sieve 1))
+    (equal (prime-sieve 2) '(2))
+    (equal (prime-sieve 10) '(2 3 5 7))
+    (equal (prime-sieve 20) '(2 3 5 7 11 13 17 19))))
 
 (deftest test-number-theory ()
   (check

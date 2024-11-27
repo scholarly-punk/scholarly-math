@@ -38,4 +38,5 @@
 	   #:drop-last-digit
 	   #:count-multiples-between
 	   #:multiple-of-p
-	   #:sqr))
+	   #:sqr
+	   #:prime-sieve))
