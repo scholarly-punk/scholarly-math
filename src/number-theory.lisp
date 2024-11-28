@@ -59,7 +59,7 @@ between START and END to include in the list."
 (defun primep (n)
   "Return t if n is a prime number. nil otherwise."
   (check-type n plus-integer)
-  (if (or (= n 1) (evenp n))
-      nil
-      (not (let ((divisor-candidates (cdr (prime-sieve (truncate (sqrt n))))))
-	     (find-if #'(lambda (x) (multiple-of-p n x)) divisor-candidates)))))
+  (cond ((= n 2))
+	((or (= n 1) (evenp n))	nil)
+	(t (not (let ((divisor-candidates (cdr (prime-sieve (truncate (sqrt n))))))
+		  (find-if #'(lambda (x) (multiple-of-p n x)) divisor-candidates))))))
