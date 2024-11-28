@@ -355,12 +355,20 @@
     (equal (prime-sieve 10) '(2 3 5 7))
     (equal (prime-sieve 20) '(2 3 5 7 11 13 17 19))))
 
+(deftest test-primep ()
+  (check
+    (not (primep 1))
+    (every #'primep (prime-sieve 10))
+    (every #'primep (prime-sieve 1000))
+    (every #'primep (prime-sieve 100000))))
+
 (deftest test-number-theory ()
   (check
     (test-multiple-of-p)
     (test-closest-multiple-of)
     (test-multiples-of)
-    (test-count-multiples-between)))
+    (test-count-multiples-between)
+    (test-primep)))
 
 (deftest test-all ()
   (check
