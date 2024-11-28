@@ -61,5 +61,5 @@ between START and END to include in the list."
   (check-type n plus-integer)
   (cond ((= n 2))
 	((or (= n 1) (evenp n))	nil)
-	(t (not (let ((divisor-candidates (cdr (prime-sieve (truncate (sqrt n))))))
-		  (find-if #'(lambda (x) (multiple-of-p n x)) divisor-candidates))))))
+	(t (let ((divisor-candidates (cdr (prime-sieve (truncate (sqrt n))))))
+	     (notany #'(lambda (x) (multiple-of-p n x)) divisor-candidates)))))
