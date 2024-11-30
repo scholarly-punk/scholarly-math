@@ -321,9 +321,18 @@
     (not (set-equal '(1 2) '(1 3)))
     (not (set-equal '(1 2) '(1 2 3)))))
 
+(deftest test-proper-subset-p ()
+  (check
+    (not (proper-subset-p '(1 2) '(1 2)))
+    (not (proper-subset-p '(1 2) '(2 1)))
+    (not (proper-subset-p '(1 2) '(3 4)))
+    (not (proper-subset-p '(1 2) '(1 3)))
+    (proper-subset-p '(1 2) '(1 2 3))))
+
 (deftest test-set ()
   (check
-    (test-set-equal)))
+    (test-set-equal)
+    (test-proper-subset-p)))
 
 (deftest test-multiple-of-p ()
   (check

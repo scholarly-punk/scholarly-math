@@ -41,4 +41,5 @@
 	   #:sqr
 	   #:prime-sieve
 	   #:primep
-	   #:set-equal))
+	   #:set-equal
+	   #:proper-subset-p))
