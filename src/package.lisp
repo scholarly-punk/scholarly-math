@@ -40,4 +40,5 @@
 	   #:multiple-of-p
 	   #:sqr
 	   #:prime-sieve
-	   #:primep))
+	   #:primep
+	   #:set-equal))

@@ -313,6 +313,18 @@
     (test-list-to-integer)
     (test-integer-to-list)))
 
+(deftest test-set-equal ()
+  (check
+    (set-equal '(1 2) '(1 2))
+    (set-equal '(1 2) '(2 1))
+    (not (set-equal '(1 2) '(3 4)))
+    (not (set-equal '(1 2) '(1 3)))
+    (not (set-equal '(1 2) '(1 2 3)))))
+
+(deftest test-set ()
+  (check
+    (test-set-equal)))
+
 (deftest test-multiple-of-p ()
   (check
     (multiple-of-p 10 5)
@@ -375,4 +387,5 @@
     (test-types-and-predicates)
     (test-arithmetic)
     (test-list)
+    (test-set)
     (test-number-theory)))
