@@ -22,16 +22,20 @@ set such that s1 is a subset of s2 but is not equal to s2."
 subsets of SET."
   (check-type set list)
   (reduce (lambda (subsets element)
-	    (append subsets (mapcar (lambda (subset)
-				      (cons element subset))
-				    subsets)))
+	    (append subsets
+		    (mapcar (lambda (subset)
+			      (cons element subset))
+			    subsets)))
 	  set
 	  :initial-value '(nil)))
 
 (defun cartesian-product (s1 s2)
   "Return the cartesian product of s1 and s2."
-  (apply #'append (mapcar (lambda (x)
-			    (mapcar (lambda (y)
-				      (list x y))
-				    s2))
-			  s1)))
+  (check-type s1 list)
+  (check-type s2 list)
+  (apply #'append
+	 (mapcar (lambda (x)
+		   (mapcar (lambda (y)
+			     (list x y))
+			   s2))
+		 s1)))
