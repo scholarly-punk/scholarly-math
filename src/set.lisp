@@ -16,3 +16,14 @@ set such that s1 is a subset of s2 but is not equal to s2."
   (check-type test function)
   (and (subsetp s1 s2 :test test)
        (not (set-equal s1 s2 :test test))))
+
+(defun power-set (set)
+  "Return the Power Set of SET. The Power Set of SET consists of all the
+subsets of SET."
+  (check-type set list)
+  (reduce (lambda (subsets element)
+	    (append subsets (mapcar (lambda (subset)
+				      (cons element subset))
+				    subsets)))
+	  set
+	  :initial-value '(nil)))

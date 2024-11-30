@@ -329,10 +329,19 @@
     (not (proper-subset-p '(1 2) '(1 3)))
     (proper-subset-p '(1 2) '(1 2 3))))
 
+(deftest test-power-set ()
+  (check
+    (set-equal (power-set '(a)) '(nil (a)) :test #'set-equal)
+    (set-equal (power-set '(a b)) '(nil (a) (b) (a b)) :test #'set-equal)
+    (set-equal (power-set '(a b c))
+	       '(nil (a) (b) (c) (a b) (b c) (a c) (a b c))
+	       :test #'set-equal)))
+
 (deftest test-set ()
   (check
     (test-set-equal)
-    (test-proper-subset-p)))
+    (test-proper-subset-p)
+    (test-power-set)))
 
 (deftest test-multiple-of-p ()
   (check

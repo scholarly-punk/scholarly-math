@@ -42,4 +42,5 @@
 	   #:prime-sieve
 	   #:primep
 	   #:set-equal
-	   #:proper-subset-p))
+	   #:proper-subset-p
+	   #:power-set))
