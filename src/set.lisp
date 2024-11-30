@@ -14,5 +14,5 @@ set such that s1 is a subset of s2 but is not equal to s2."
   (check-type s1 list)
   (check-type s2 list)
   (check-type test function)
-  (and (subsetp s1 s2)
-       (not (set-equal s1 s2))))
+  (and (subsetp s1 s2 :test test)
+       (not (set-equal s1 s2 :test test))))
