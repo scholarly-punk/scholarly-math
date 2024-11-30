@@ -337,11 +337,19 @@
 	       '(nil (a) (b) (c) (a b) (b c) (a c) (a b c))
 	       :test #'set-equal)))
 
+(deftest test-cartesian-product ()
+  (check
+    (set-equal (cartesian-product '(a) '(b)) '((a b)) :test #'set-equal)
+    (set-equal (cartesian-product '(a) '(b c)) '((a b) (a c)) :test #'set-equal)
+    (set-equal (cartesian-product '(0 1) '(1 a b))
+	       '((0 1) (0 a) (0 b) (1 1) (1 a) (1 b)) :test #'set-equal)))
+
 (deftest test-set ()
   (check
     (test-set-equal)
     (test-proper-subset-p)
-    (test-power-set)))
+    (test-power-set)
+    (test-cartesian-product)))
 
 (deftest test-multiple-of-p ()
   (check

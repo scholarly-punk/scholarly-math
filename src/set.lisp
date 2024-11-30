@@ -27,3 +27,11 @@ subsets of SET."
 				    subsets)))
 	  set
 	  :initial-value '(nil)))
+
+(defun cartesian-product (s1 s2)
+  "Return the cartesian product of s1 and s2."
+  (apply #'append (mapcar (lambda (x)
+			    (mapcar (lambda (y)
+				      (list x y))
+				    s2))
+			  s1)))

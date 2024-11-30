@@ -43,4 +43,5 @@
 	   #:primep
 	   #:set-equal
 	   #:proper-subset-p
-	   #:power-set))
+	   #:power-set
+	   #:cartesian-product))
