@@ -47,12 +47,12 @@ between START and END to include in the list."
 (defun prime-sieve (n)
   "Return the prime numbers between 2 and N."
   (check-type n plus-integer)
-
   (if (= n 1)
       '()
-      (do ((candidates (range (1+ n) :start 2) (remove-if #'(lambda (x)
-							      (multiple-of-p x (first candidates)))
-							  (rest candidates)))
+      (do ((candidates (range (1+ n) :start 2)
+		       (remove-if (lambda (x)
+				    (multiple-of-p x (first candidates)))
+				  (rest candidates)))
 	   (primes '() (cons (car candidates) primes)))
 	  ((> (sqr (first candidates)) n) (append (nreverse primes) candidates)))))
 
@@ -61,5 +61,6 @@ between START and END to include in the list."
   (check-type n plus-integer)
   (cond ((= n 2))
 	((or (= n 1) (evenp n))	nil)
-	(t (let ((divisor-candidates (cdr (prime-sieve (truncate (sqrt n))))))
-	     (notany #'(lambda (x) (multiple-of-p n x)) divisor-candidates)))))
+	(t (notany (lambda (x)
+		     (multiple-of-p n x))
+		   (cdr (prime-sieve (truncate (sqrt n))))))))
