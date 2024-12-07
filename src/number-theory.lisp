@@ -64,3 +64,15 @@ between START and END to include in the list."
 	(t (notany (lambda (x)
 		     (multiple-of-p n x))
 		   (cdr (prime-sieve (truncate (sqrt n))))))))
+
+(defun prime-factors (n)
+  "Return a list containing the prime factors of N."
+  (check-type n non-minus-integer)
+  (labels ((prime-factors-h (n factors primes)
+	     (cond ((or (= n 1) (endp primes)) factors)
+		   ((multiple-of-p n (first primes))
+		    (prime-factors-h (truncate n (first primes))
+				     (cons (first primes) factors)
+				     primes))
+		   (t (prime-factors-h n factors (rest primes))))))
+    (prime-factors-h n '() (prime-sieve n))))

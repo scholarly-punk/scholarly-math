@@ -400,13 +400,18 @@
     (every #'primep (prime-sieve 1000))
     (every #'primep (prime-sieve 100000))))
 
+(deftest test-prime-factors ()
+  (check
+    (equal (prime-factors 12) '(3 2 2))))
+
 (deftest test-number-theory ()
   (check
     (test-multiple-of-p)
     (test-closest-multiple-of)
     (test-multiples-of)
     (test-count-multiples-between)
-    (test-primep)))
+    (test-primep)
+    (test-prime-factors)))
 
 (deftest test-all ()
   (check

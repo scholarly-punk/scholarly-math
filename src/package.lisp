@@ -44,4 +44,5 @@
 	   #:set-equal
 	   #:proper-subset-p
 	   #:power-set
-	   #:cartesian-product))
+	   #:cartesian-product
+	   #:prime-factors))
